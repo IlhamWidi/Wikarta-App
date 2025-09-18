@@ -26,14 +26,17 @@ class DashboardScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 26),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _statCard("Pelanggan", 123, Icons.people, AppColors.deepBlue, 0),
-                _statCard("Paket", 4, Icons.wifi, AppColors.accent, 1),
-                _statCard("Invoice", 27, Icons.receipt_long, Colors.amber[800]!, 2),
-                _statCard("Tiket", 3, Icons.support_agent, AppColors.error, 3),
-              ],
+            // SOLUSI: Ubah Row jadi scroll horizontal agar tidak overflow
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  _statCard("Pelanggan", 123, Icons.people, AppColors.deepBlue, 0),
+                  _statCard("Paket", 4, Icons.wifi, AppColors.accent, 1),
+                  _statCard("Invoice", 27, Icons.receipt_long, Colors.amber[800]!, 2),
+                  _statCard("Tiket", 3, Icons.support_agent, AppColors.error, 3),
+                ].map((w) => Padding(padding: const EdgeInsets.only(right: 12), child: w)).toList(),
+              ),
             ),
             const SizedBox(height: 36),
             FadeInUp(

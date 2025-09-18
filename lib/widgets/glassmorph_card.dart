@@ -41,15 +41,17 @@ class GlassmorphCard extends StatelessWidget {
       ),
       child: child,
     );
-    return onTap != null
-        ? Material(
-            color: Colors.transparent,
-            child: InkWell(
+    // Tambahkan Material agar ListTile di dalamnya selalu aman
+    return Material(
+      color: Colors.transparent,
+      borderRadius: BorderRadius.circular(22),
+      child: onTap != null
+          ? InkWell(
               borderRadius: BorderRadius.circular(22),
               onTap: onTap,
               child: core,
-            ),
-          )
-        : core;
+            )
+          : core,
+    );
   }
 }
